@@ -7,7 +7,7 @@ import index from './routes/index.js'
 
 // let totalJson = Object.assign({}, data, data2)
 
-console.log(data)
+// console.log(data)
 
 // console.log(object)
 
