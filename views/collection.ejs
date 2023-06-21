@@ -1,0 +1,72 @@
+<%- include('./partials/head.ejs') %>
+<section class="collection" style="--bg:#<%= item.attributes.style.backgroundColor %>">
+<section class="collection-view" >
+  <img class="collection-view__img" srcset="/public/<%= imageFiles[mainVisuals[item.relationships.mainVisual.data.id]] %>" alt="#TODO" width="100" height="100">
+  <article class="collection-view__info">
+    <h1 class="collection-view__titel" style="--bg:#<%= item.attributes.style.backgroundColor %>"><%= item.attributes.title %></h1>
+    <div class="auteur-info">
+        <img src="/image/auteur.png" alt="auteur" width="70" height="70" class="auteur-image">
+        <em>Jesse Frederik</em>
+    </div>
+</article>
+<div class="collection-view__buttons">
+  <button onclick="readMoreFunction()" id="read-more-button" class="read-more-button">leer meer</button><p id="dots"></p>
+  <a href="#like">
+    <svg>
+        <use href="../icons-svg/icons.svg#heart" />
+    </svg>
+</a>
+<a href="#like">
+    <svg class="play-button">
+        <use href="../icons-svg/icons.svg#play" />
+    </svg>
+</a>
+ </div>
+  <div id="read-more-text">
+  <p class="collection-view__subtitel"><%= item.attributes.subtitle %></p>
+  <p class="collection-view__subtitel"><%= item.attributes.intro %></p>
+  </div>
+</section>
+<section class="playable-podcast-list">
+<% if (itemData && itemData.data && itemData.data.length) { %>
+    <% itemData.data.forEach((sound, index) => { %>
+        <!-- Playable podcast item -->
+        <article class="playable-podcast-item">
+            <div class="playable-podcast-image">
+                <!-- Hier komt de image cover van de podcast -->
+                <img class="playable-podcast-image-cover" srcset="/public/<%= imageFiles[mainVisuals[item.relationships.mainVisual.data.id]] %>" alt="#TODO" width="100" height="100">
+            </div>
+            <div class="playable-podcast-title">
+                <a href="/sound/<%= sound.id %>" style="--bg:#<%= item.attributes.style.backgroundColor %>">
+                    <p >
+                        <!-- Add the descending number -->
+                        <span class="epesode-number"><%= itemData.data.length - index %></span> - 
+                        <%=
+                        sound.attributes.title.length > 60
+                            ? sound.attributes.title.substring(0, 57) + "..."
+                            : sound.attributes.title
+                        %>
+                    </p>
+                    <p class="epesode-time">
+                        <svg>
+                            <use href="../icons-svg/icons.svg#reading-time" />
+                        </svg>
+                       40:30 
+                    </p>
+                </a>
+                <div class="progress-line">
+                    <div class="progress-line-value-0"></div>
+                </div>
+            </div>
+            <div class="playable-podcast-button">
+                <svg class="play-button">
+                    <use href="../icons-svg/icons.svg#play" />
+                </svg> Afspelen
+            </div>
+        </article>
+    <% }); %>
+<% } else { %>
+    <p class="error">Error loading podcasts</p>
+<% } %>
+</section>
+</section>

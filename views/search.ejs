@@ -1,0 +1,35 @@
+<%- include('./partials/head.ejs') %>
+<section class="search-page">
+        <section>
+            <a href="/">
+                <svg >
+                    <use href="../icons-svg/icons.svg#logo-full-red" />
+                </svg>
+            </a>
+            <h1>Ontdek nieuwe luisteravonturen</h1>
+            <input type="search" name="podcast-search" id="" placeholder="Zoeken...">
+        </section>
+        <section class="search-page__suggesties">
+            <div>
+                <h2>Suggesties</h2>
+                <article>
+                <% if (data && data.data.length) { %>
+                <% data.data.forEach(collection => { %>
+                    <a id="<%= collection.attributes.slug %>" href="/collection/<%= collection.attributes.slug %>" style="--bg:#<%= collection.attributes.style.backgroundColor %>">
+                        <div>
+                            <picture>
+                                <img srcset="<%= imageFiles[mainVisuals[collection.relationships.mainVisual.data.id]]%>" alt="" width="100" height="100" loading="lazy">
+                            </picture>
+                        </div>
+                        <div>
+                            <p><%= collection.attributes.title %></p>
+                        </div>
+                    </a>
+                <% }); %>
+            <% } else { %>
+                <p class="error">Error loading podcasts</p>
+            <% } %>  
+            </article>
+            </div>
+        </section>
+</section>

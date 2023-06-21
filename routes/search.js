@@ -4,6 +4,7 @@ import express from 'express'
 import { fetchJson } from '../helpers/fetchWrapper.js'
 import data from '../Course/collections.json' assert { type: 'json' }
 
+
 var mainVisuals = {}
 var imageFiles = {}
 // Loop door alle included variabelen heen
@@ -14,13 +15,12 @@ data.included.forEach(element => {
       imageFiles[element.id] = element.attributes.sourceSet
    }
 })
-
 dotenv.config()   
-const index = express.Router()
+const search = express.Router()
 // Maak een route voor de index
-index.get('/', (request, response) => { 
+search.get('/search', (request, response) => { 
    const dataJson = './'
-   response.render('index', {data: data, mainVisuals: mainVisuals, imageFiles: imageFiles})
+   response.render('search', {data: data, mainVisuals: mainVisuals, imageFiles: imageFiles})
    //console.log(data);
       })  
-export default index
+export default search

@@ -1,15 +1,9 @@
 import express from 'express'
 import index from './routes/index.js'
-// import data from './Course/collections.json' assert { type: 'json' }
-// import data2 from './Course/collection/49453.json' assert { type: 'json' }
+import collections from './routes/collections.js'
+import search from './routes/search.js'
 
-// const object = {}
 
-// let totalJson = Object.assign({}, data, data2)
-
-// console.log(data)
-
-// console.log(object)
 
 const server = express()
 
@@ -27,6 +21,8 @@ server.use(express.json())
 server.use(express.urlencoded({ extended: true }))
 
 server.use(index)
+server.use(collections)
+server.use(search)
 
 // Start met luisteren
 server.listen(server.get('port'), () => {
