@@ -62,7 +62,9 @@ Volg deze stappen om het project succesvol te openen, te ontwikkelen en live te 
 ## Bronnen
 
 https://greensock.com/docs/v3/Plugins/ScrollTrigger#:~:text=%3A%20500%0A%7D)%3B-,Advanced%20example,-let%20tl%20%3D 
+
 https://v8.dev/features/import-assertions
+
 Dorin, Tolga, Thomas, Krijn, Ivar, stefan , Cyd, Suus en tuurlijk Rosa voor design (pedding) 
 
 ## Licentie
